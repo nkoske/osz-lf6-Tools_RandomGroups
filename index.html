@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <title id="siteTitle">Gruppenbildung</title>
+        <link rel="stylesheet" href="css/main.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+        <script src="js/nicEdit.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            bkLib.onDomLoaded(function() {
+                new nicEditor({fullPanel : true,iconsPath : 'images/nicEditorIcons.gif'}).panelInstance('projectname');
+            });
+        </script>
+        <script src="js/main.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="contentwrapper">
+            <div id="mainmenu">
+                <div id="menu">
+                    <label for="className" class="border">Klassenname<br>
+                        <input id="className" type="text" onkeyup="handleDisplay()" autofocus>
+                    </label>
+
+                    <label for="lessonName" class="border">Fach<br>
+                        <input id="lessonName" type="text" onkeyup="handleDisplay()">
+                    </label>
+
+                    <label for="studentCount" class="border">Schüleranzahl<br>
+                        <input id="studentCount" type="number" onkeyup="updateStudentPresenceList()">
+                    </label>
+
+                    <label for="groupCount" class="border">Gruppenanzahl<br>
+                        <input id="groupCount" type="number" onkeyup="updateStudentPresenceList()">
+                    </label>
+
+                    <label for="projectname" id="wysiwygwrapper"class="border">Name der Aufgabe<br>
+                        <textarea id="projectname" cols="40" onkeyup="handleDisplay()"></textarea>
+                    </label>
+                    <button onclick="window.print()" class="border">Print</button>
+                </div>
+                <div id="selectionList">
+                    <div id="selectonListTitle" > Anwesenheit Schüler (Klassenbuchnummer)</div>
+                    <div id="studentPresence">
+                    </div>
+                </div>
+            </div>
+            <div id="randomgroups">
+                <div id="classMeta">
+                    <div id="class">Klasse:&nbsp; <div id="classNameLabel"></div></div>
+                    <div id="lesson">Fach:&nbsp;  <div id="lessonLabel"></div></div>
+                </div>
+                <div id="dateWrapper" class="border"> Datum:&nbsp;<div id="date"></div> </div>
+                <div id="projectWrapper">
+                    <div id="project">Aufgabe:</div>
+                    <div id="projectnameLabel"></div>
+                </div>
+                <div id="groups">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
