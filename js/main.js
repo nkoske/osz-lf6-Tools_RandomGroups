@@ -11,6 +11,11 @@ window.onload = function () {
     element.addEventListener("keyup", handleDisplay);
     element.addEventListener("mouseup", handleDisplay);
     initStorage = "init";
+
+    document.getElementById('rtdStop').addEventListener ('keydown', function (event) {
+        console.log(event.key)
+    });
+
 };
 
 function printPage () {
@@ -231,9 +236,22 @@ function rtdStop () {
     document.getElementById('rtdStop').style.display = "none";
 }
 function rollTheDice () {
-    document.getElementById('rtdStop').style.display = "block";
-    var i = 1;
-    rtd(1)
+
+
+    if (document.getElementById('groups').childElementCount > 1) {
+        element = document.getElementById('rtdStop')
+
+        element.style.display = "block";
+        document.getElementById('rtdStop').focus();
+
+        var i = 1;
+        rtd(1)
+
+    }
+
+
+
+
 }
               //  set your counter to 1
 
