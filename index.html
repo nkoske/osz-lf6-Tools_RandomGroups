@@ -14,6 +14,8 @@
         <script src="js/main.js" type="text/javascript"></script>
     </head>
     <body>
+
+
         <div id="contentwrapper">
             <div id="mainmenu">
                 <div id="menu">
@@ -26,18 +28,24 @@
                     </label>
 
                     <label for="studentCount" class="border">Schüleranzahl<br>
-                        <input id="studentCount" type="number" onkeyup="updateStudentPresenceList()">
+                        <input id="studentCount" type="number" onkeyup="updateStudentPresenceList()" onclick="updateStudentPresenceList()">
                     </label>
 
                     <label for="groupCount" class="border">Gruppenanzahl<br>
-                        <input id="groupCount" type="number" onkeyup="updateStudentPresenceList()">
+                        <input id="groupCount" type="number" onkeyup="updateStudentPresenceList()" onclick="updateStudentPresenceList()">
                     </label>
 
                     <label for="projectname" id="wysiwygwrapper"class="border">Name der Aufgabe<br>
                         <textarea id="projectname" cols="40" onkeyup="handleDisplay()"></textarea>
                     </label>
-                    <button onclick="window.print()" class="border">Print</button>
+                    <div id="buttonGrid">
+                        <button onclick="printPage()" class="border">Print</button>
+                        <button onclick="rollTheDice()" class="border">Roll The Dice</button>
+
+                    </div>
+
                 </div>
+                <div id="rtdStop" onclick="rtdStop()">Stop the Dice</div>
                 <div id="selectionList">
                     <div id="selectonListTitle" > Anwesenheit Schüler (Klassenbuchnummer)</div>
                     <div id="studentPresence">
