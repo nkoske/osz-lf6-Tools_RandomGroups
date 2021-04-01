@@ -105,7 +105,7 @@ body {
 }
 #groups {
     margin-top: 20px;
-    display: flex;
+    display: none;
     width: 100%;
     flex-wrap: wrap;
 }
@@ -126,7 +126,6 @@ body {
 }
 #menu button {
     height: 30px;
-    margin-top: 10px;
 }
 
 .border {
@@ -174,4 +173,31 @@ body {
 }
 #studentCount, #groupCount, #lessonName, #className {
     width: 82px;
+}
+#buttonGrid {
+    display: grid;
+    grid-template-rows: auto 30px 30px auto;
+    grid-gap: 10px;
+}
+#buttonGrid > button:nth-child(2) {
+    grid-row: 3;
+}
+#buttonGrid > button:nth-child(1) {
+    grid-row: 2;
+}
+#rtdStop {
+
+    cursor: pointer;
+    display: none;
+    background: #ffecec;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    width: 320px;
+    text-align: center;
+    font-size: 21px;
+    margin-left: 50%;
+    z-index: 5;
+    transform: translateX(-50%);
+    margin-top: 50px;
 }
