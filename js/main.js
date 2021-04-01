@@ -13,6 +13,11 @@ window.onload = function () {
     initStorage = "init";
 };
 
+function printPage () {
+    rtdStop();
+    window.print();
+}
+
 function handleDisplay() {
     document.getElementById('classNameLabel').innerHTML = document.getElementById('className').value;
     nicedit = document.getElementsByClassName('nicEdit-main')
