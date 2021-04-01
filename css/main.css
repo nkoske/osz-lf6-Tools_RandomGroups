@@ -200,4 +200,9 @@ body {
     z-index: 5;
     transform: translateX(-50%);
     margin-top: 50px;
+    text-decoration: none;
+    color: black;
+}
+#rtdStop:focus {
+    outline: 0;
 }
