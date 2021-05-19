@@ -180,21 +180,38 @@ function updateGroups() {
 }
 
 function parseGroups(students,studentsPerGroup,rest) {
+
     groups = [];
     group = [];
-    while (students.length > 0) {
+     
+    while (students.length > 0  ) {
+		if ( rest == students.length ) {
+		
+			break;	
+		}
         rand = Math.floor(Math.random() * Math.floor(students.length));
         group.push(students.splice(rand, 1)[0])
+    
+   
         if (group.length === studentsPerGroup) {
-            if (parseInt(rest) > 0) {
-                group.push(students.splice(rand, 1)[0])
-                rest -= 1;
-            }
             groups.push(group)
+                   
             group =[]
-        }
+        } 
     }
+    
+    groupId=0
+    
+    while (students.length > 0) {
+		rand = Math.floor(Math.random() * Math.floor(students.length));
+		groups[groupId].push(students.splice(rand, 1)[0])
+		groupId += 1
+		if(groupId > groups.length) {
+			  groupId=0
+		}
+	}
     if (groups.length >= 1) {
+		
         displayGroups(groups)
     }
 }
@@ -202,14 +219,17 @@ function parseGroups(students,studentsPerGroup,rest) {
 function displayGroups(groups) {
     groups_HTML = ""
     for (index=0;groups.length > index;index++) {
+	
         studentStr=""
         group = groups[index]
         group_HTML = '<div id="group">'+
             '<div>Gruppe '+(index+1)+'</div><hr>\n' +
             '<div>\n';
         for (student=0;group.length > student;student++) {
+		
             if (studentStr === "") {
                 studentStr = group[student]
+                
             } else {
                 studentStr += ", "+group[student]
             }
