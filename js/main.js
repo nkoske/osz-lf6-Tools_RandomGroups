@@ -1,4 +1,3 @@
-
 window.onload = function () {
     localStorage.clear();
     var today = new Date();
@@ -37,7 +36,6 @@ function handleDisplay() {
     if (document.getElementById('lessonName').value) {
         document.getElementById('lesson').style.display = "flex";
         document.getElementById('classMeta').style.display = "block";
-
     } else {
         document.getElementById('lesson').style.display = "none";
     }
@@ -67,7 +65,6 @@ function handleDisplay() {
 
 function updateStudentPresenceList() {
     count = document.getElementById('studentCount').value;
-
     if (count < 1) {
         count = 0;
         document.getElementById('studentCount').value = ""   ;
@@ -92,10 +89,8 @@ function updateStudentPresenceList() {
     if (count > 50) {
         count =50;
     }
-
     if (count >= 1) {
         student_presence =""
-
        for (var id1=1;count+1> id1;id1++) {
             checkbox = document.getElementById("student_"+id1);
             if (checkbox) {
@@ -107,11 +102,8 @@ function updateStudentPresenceList() {
             student_presence = student_presence + '<div class="student border"><div>'+index+'</div> <input id="student_'+index+'" type="checkbox" class="studentCheckbox" onclick="updateGroups()" checked ></div>'
         }
         document.getElementById('studentPresence').innerHTML = student_presence;
-
-
         for (var index=1;count+1> index;index++) {
             checked = JSON.parse(localStorage.getItem("student_"+index));
-
             if(checked) {
                 document.getElementById("student_" + index).checked = checked;
             } else {
@@ -129,7 +121,6 @@ function updateStudentPresenceList() {
 function updateGroups() {
     handleDisplay()
     studentCount = parseInt(document.getElementById('studentCount').value);
-
     checkboxes = document.getElementsByClassName('studentCheckbox')
     activeStudents= []
     for (index=0;checkboxes.length > index;index++) {
@@ -139,15 +130,12 @@ function updateGroups() {
     }
     if (activeStudents.length > 0) {
         groupCount = document.getElementById('groupCount').value;
-
         if (groupCount > 50) {
             groupCount = 50;
         }
-
         if (groupCount < 1) {
             groupCount = "";
         }
-
         if (studentCount == NaN) {
             groupCount = "";
         } else {
@@ -156,7 +144,6 @@ function updateGroups() {
             }
         }
         document.getElementById('groupCount').value = groupCount;
-
         if (!groupCount || groupCount < 1) {
             groupCount = 1;
         }
@@ -180,28 +167,20 @@ function updateGroups() {
 }
 
 function parseGroups(students,studentsPerGroup,rest) {
-
     groups = [];
-    group = [];
-     
+    group = [];   
     while (students.length > 0  ) {
 		if ( rest == students.length ) {
-		
 			break;	
 		}
         rand = Math.floor(Math.random() * Math.floor(students.length));
         group.push(students.splice(rand, 1)[0])
-    
-   
         if (group.length === studentsPerGroup) {
             groups.push(group)
-                   
             group =[]
         } 
     }
-    
     groupId=0
-    
     while (students.length > 0) {
 		rand = Math.floor(Math.random() * Math.floor(students.length));
 		groups[groupId].push(students.splice(rand, 1)[0])
@@ -219,17 +198,14 @@ function parseGroups(students,studentsPerGroup,rest) {
 function displayGroups(groups) {
     groups_HTML = ""
     for (index=0;groups.length > index;index++) {
-	
         studentStr=""
         group = groups[index]
         group_HTML = '<div id="group">'+
             '<div>Gruppe '+(index+1)+'</div><hr>\n' +
             '<div>\n';
         for (student=0;group.length > student;student++) {
-		
             if (studentStr === "") {
                 studentStr = group[student]
-                
             } else {
                 studentStr += ", "+group[student]
             }
@@ -256,35 +232,21 @@ function rtdStop () {
     document.getElementById('rtdStop').style.display = "none";
 }
 function rollTheDice () {
-
-
     if (document.getElementById('groups').childElementCount > 1) {
         element = document.getElementById('rtdStop')
-
         element.style.display = "block";
         document.getElementById('rtdStop').focus();
-
         var i = 1;
         rtd(1)
-
     }
-
-
-
-
-}
-              //  set your counter to 1
-
+}         
+//  set your counter to 1
 function rtd(i) {         //  create a loop function
     setTimeout(function() {   //  call a 3s setTimeout when the loop is called
         i++;                    //  increment the counter
-
             if (document.getElementById('rtdStop').style.display != "none") {
                 updateStudentPresenceList();
                 rtd(i);             //  ..  again which will trigger another
-
         }                       //  ..  setTimeout()
     }, 80)
 }
-
-
